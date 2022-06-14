@@ -1,0 +1,14 @@
+# root 로 작업
+sudo -s
+
+# 레드마인이 설치된 경로/plugins 로 이동
+cd /usr/share/redmine/plugins
+
+# github 에서 플러그인 다운로드 받기
+# <중요> git 이 설치되지 않았다면 플러그인 다운로드 전, git 부터 설치
+git clone https:github.com/jgraichen/redmine_dashboard.git
+
+# 레드마인에 설치
+cd /usr/share/redmine
+rake redmine:plugins:migrate RAILS_ENV=production
+service apache2 restart
